@@ -27,6 +27,21 @@ let utils = {
         }
         return false
     },
+    getParams: function() {
+    let search = window.location.search, paramsObj = {}, args, param;
+    console.log(search);
+    if (search && search.length) {
+      search = search.split("?")[1];
+      args = search.split("&");
+      for (let i = 0; i < args.length; i++) {
+        param = args[i].split("=");
+        paramsObj[param[0]] = param.length > 1 ? param[1] : "";
+      }
+      return paramsObj;
+    }
+    return "";
+    },
+
     /**
      * 省份城市集合
      */
